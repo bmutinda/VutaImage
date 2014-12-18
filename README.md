@@ -1,4 +1,4 @@
 VutaImage
 =========
 
-Download images with ease in Android
+Android Libray that makes it easy to download images with a simple and straight forward api.
