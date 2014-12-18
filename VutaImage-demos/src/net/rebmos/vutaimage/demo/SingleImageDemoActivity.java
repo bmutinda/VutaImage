@@ -16,7 +16,7 @@ public class SingleImageDemoActivity extends Activity {
 		
 		// https://avatars0.githubusercontent.com/u/1729141?v=3&s=460
 		// http://mutinda.rebmos.net/wp-content/uploads/2014/12/logo-11.png
-		final String imageUrl = "http://aymzz.com/depo/nmb/images/StudentAccount.png";
+		final String imageUrl = "http://www.villard.biz/assets/Uploads/projects/portrait-o.jpg";
 		
 		String sdCard = VutaImage.getExternalStorage( );
 		String filename = sdCard+"/file.png";
