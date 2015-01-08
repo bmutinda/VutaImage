@@ -90,8 +90,8 @@ VutaImage.download( imageUrl, new ImageDownloadCallback() {
 				You can download an image without specifying the destination filename and the library with automatically 
 				resolve the filename from the supplied link. For instance, downloading an image from 
 				<span class="embedded-link">http://www.example.com/images/image.png</span>, the downloaded image 
-				will be saved with the name <span class="embedded-link">image.png</span> in the specified storage 
-				location.
+				will be saved with the name <span class="embedded-link">image.png</span> in the default storage 
+				location - which is the <span class="embedded-link">sdcard</span>
 				
 					<pre class="prettyprint lang-java">
 final String imageUrl = "http://www.villard.biz/assets/Uploads/projects/portrait-o.jpg";
@@ -157,10 +157,83 @@ VutaImage.download( vutaImageItem, new ImageDownloadCallback() {
 });
 				</pre>
 				<p>
+			
+				
+				<!-- mutliple images download -->
+				<br/>
+				<h3 class="heading-small">2. Multiple images download</h3>
+				<p>Define a list of all the images you want to download using the VutaImageItem class as follows </p>
+				<pre class="prettyprint lang-java">
+// Get the sdcard directory 
+String sdcard = VutaImage.getExternalStorage();
+
+// Create a list of all the images we want to download 
+List<VutaImageItem> images = new ArrayList<VutaImageItem>();
+images.add( new VutaImageItem("https://myexample.com/img/sample1.png", sdcard+"/img.png" ));
+images.add( new VutaImageItem("http://myexample.com/img/sample2.png", sdcard+"/Logo1.png" ));
+images.add( new VutaImageItem("http://myexample.com/img/sampl23.png", sdcard+"/Logo2.png" ));
+				</pre>
+				<p>With multiple images download, there are two callbacks you can use</p>
+				<ul>
+					<li><b>ImagesDownloadCallback</b> - you are notified on 
+						<ol>
+							<li>Each image download error and</li>
+							<li>When all the downloads are complete</li>
+						</ol>
+					</li>
+					<li><b>EachImageDownloadCallback</b> - you are notified on 
+						<ol>
+							<li>Each image download complete</li>
+							<li>Each image download error and</li>
+							<li>When all the downloads are complete</li>
+						</ol>
+					</li>
+				</ul>
+
+				<h4 class="heading-smaller"> a). With callback for each image download - <b>EachImageDownloadCallback </b></h4>
+				<p>
+				<pre class="prettyprint lang-java">
+VutaImage.download(images, new EachImageDownloadCallback() {
+   @Override
+   public void onProgress(VutaImageItem image, boolean success) {
+      Log.e(TAG, "Image downloads progress.."+image.getUrl()+"->success = "+success );
+   }
+
+   @Override
+   public void onError(VutaImageItem image) {
+      Log.e(TAG, "Image failed to download.."+image.getUrl() );
+   }
+
+   @Override
+   public void done() {
+      Log.e(TAG, "All images downloaded" );
+   }
+});
+				</pre>
+				</p>
+				
+				<h4 class="heading-smaller"> b). With callback for all images download - <b>ImagesDownloadCallback </b></h4>
+				<p>
+				<pre class="prettyprint lang-java">
+VutaImage.download(images, new ImagesDownloadCallback() {
+   @Override
+   public void onError(VutaImageItem image) {
+      Log.e(TAG, "Image failed to download..."+image.getUrl()+"->"+image.getFilename() );
+   }
+
+   @Override
+   public void done() {
+      Log.e(TAG, "All images downloaded" );
+   }
+});
+				</pre>
+				</p>
 				
 				
 				
-				<!-- configurations ---->
+				<!------------------------ ------------------------ ------------------------>
+				<!------------------------ configurations ------------------------>
+				<!------------------------ ------------------------ ------------------------>
 				<h2 id="configurations" class="heading">Configurations</h2>
 				<h2 id="documentation" class="heading">Methods Documentation</h2>
 			</div>
