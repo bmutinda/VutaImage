@@ -1,0 +1,83 @@
+*{ 
+	padding:0; 
+	margin: 0; 
+}
+p{ 
+	line-height: 19px;
+}
+a, a:hover {
+	color: #163;
+}
+.bg-green{
+	background-color: #48b983;
+}
+
+.no-padding-top{ padding-top:0 !important; }
+
+body{ 
+	background: #eaf6ee url('invaders.png') repeat;
+	font-family: verdana;
+	color: #333;
+	font-size: 12px;
+}
+
+.container{ 
+	max-width: 980px; 
+	margin:5px auto;
+}
+
+#ribbon img {
+	position: fixed;
+	top: 0;
+	right: 0;
+	border: 0;
+	z-index: 99999;
+}
+
+header{
+	min-height: 80px;
+	color: #f6f6f6;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 99;
+}
+
+.header-github{
+	width:100%;
+	max-width:50px;
+}
+
+.content-start{
+	margin-top:150px;
+}
+.heading{
+	font-weight: 300;
+	font-style: italic;
+	color: #888;
+	font-size: 20px;
+	padding: 10px 0 10px 0;
+	margin-top: 0;
+}
+.right-menu{
+	min-height: 10px;
+	clear: both;
+	position: fixed;
+	right: 6%;
+}
+
+/** code formatting **/
+pre.prettyprint{
+	padding:7px;
+}
+
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+	
+}
+
+@media (max-width: 767px) {
+	
+}
