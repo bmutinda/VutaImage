@@ -4,9 +4,9 @@
 <meta name="generator"
 content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
 <meta charset="utf-8" />
-<title>Mutinda Boniface</title>
+<title>VutaImage for Android</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Mutinda Boniface, Mutinda Boniface Software Developer, Software Developer Mutinda, Android Developer in Kenya" />
+<meta name="description" content="VutaImage by Mutinda Boniface, Mutinda Boniface Software Developer, Software Developer Mutinda, Android Developer in Kenya" />
 <!--link href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" rel="stylesheet"
 title="roboto" /-->
 <link href="static/bootstrap.css" rel="stylesheet" />
@@ -41,13 +41,43 @@ title="roboto" /-->
 					<b>VutaImage</b> is an Android library that makes the work of downloading images from a URL to the device's SDCARD pretty much easy 
 					with a very simple and straight forward API.
 				</p>
-				<h2 id="installation" class="heading">Installation</h2>
+				<p>At a glance</p>
 				<p>
-					<pre class="prettyprint lang-java">
-public class sample{
-  @override
-}
-					</pre>
+				<pre class="prettyprint lang-java">
+VutaImage.download( imageUrl, saveWithFilename, new ImageDownloadCallback() {
+   @Override
+   public void progress(int elapsed, int totalSize) {
+      Log.e( TAG , "Image download progress = "+elapsed+" out of "+totalSize );
+   }
+
+   @Override
+   public void done(boolean success) {
+      Log.e( TAG , "Image download done with success = "+success );
+   }
+});
+				</pre>
+				</p>
+				
+				<h2 id="installation" class="heading">Installation</h2>
+				<h3 class="heading-small">1. Using Library Jar file - <b>Recommended</b></h3>
+				<p> 
+					Download the latest jar file from <a href="http://cdn.rebmos.net/java/vutaimage/vutaimage_1.0.jar" target="_blank">VutaImage_Jar_1.0</a>
+					<ul>
+						<li>Copy the jar file to your project’s libs folder</li>
+						<li>Right click the imported jar file, select build path then click add to build path.</li>
+					</ul>
+				</p>
+			
+				<h3 class="heading-small">2. Using the Library project</h3>
+				<p>
+					Download VutaImage project from the github project page 
+					<a href="https://github.com/mutindaz/VutaImage" target="_blank">https://github.com/mutindaz/VutaImage</a>, import VutaImage-Library to your workspace as an Android Project. Once the project has been imported successfully,
+					<ul>
+						<li>Right click the project VutaImage</li>
+						<li>Go to properties->Android then on Library panel..click Is Library checkbox.</li>
+						<li>Go to your project, right click , go to properties->Android then on Library panel Click Add,  then select VutaImage in the list of theavailable libraries</li>
+						<li>Click Apply then Ok.</li>
+					</ul>
 				</p>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-3 right-menu hidden-xs">
