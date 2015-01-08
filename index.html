@@ -44,7 +44,8 @@ title="roboto" /-->
 				<p>At a glance</p>
 				<p>
 				<pre class="prettyprint lang-java">
-VutaImage.download( imageUrl, saveWithFilename, new ImageDownloadCallback() {
+final String imageUrl = "http://www.villard.biz/assets/Uploads/projects/portrait-o.jpg";
+VutaImage.download( imageUrl, new ImageDownloadCallback() {
    @Override
    public void progress(int elapsed, int totalSize) {
       Log.e( TAG , "Image download progress = "+elapsed+" out of "+totalSize );
@@ -79,6 +80,89 @@ VutaImage.download( imageUrl, saveWithFilename, new ImageDownloadCallback() {
 						<li>Click Apply then Ok.</li>
 					</ul>
 				</p>
+				
+				<!-- Examples ---->
+				<h2 id="usage" class="heading">Usage & Examples</h2>
+				<p>Lets see how to use VutaImage to download images</p>
+				<h3 class="heading-small">1. Single image download</h3>
+				<h4 class="heading-smaller"> a). Given the image url only </h4>
+				<p>
+				You can download an image without specifying the destination filename and the library with automatically 
+				resolve the filename from the supplied link. For instance, downloading an image from 
+				<span class="embedded-link">http://www.example.com/images/image.png</span>, the downloaded image 
+				will be saved with the name <span class="embedded-link">image.png</span> in the specified storage 
+				location.
+				
+					<pre class="prettyprint lang-java">
+final String imageUrl = "http://www.villard.biz/assets/Uploads/projects/portrait-o.jpg";
+VutaImage.download( imageUrl, new ImageDownloadCallback() {
+   @Override
+   public void progress(int elapsed, int totalSize) {
+      Log.e( TAG , "Image download progress = "+elapsed+" out of "+totalSize );
+   }
+
+   @Override
+   public void done(boolean success) {
+      Log.e( TAG , "Image download done with success = "+success );
+   }
+});
+				</pre>
+				</p>
+				
+				<h4 class="heading-smaller"> b). Given the image url and the destination filename </h4>
+				<p>
+				NB: The destination filename must be the complete path together with the directory.
+				<ul>
+					<li>This will work <span class="embedded-link">/sdcard0/mydir/myfile.png</span></li>
+					<li>While this won't work <span class="embedded-link">myfile.png</span></li>
+				</ul>
+				<pre class="prettyprint lang-java">
+final String imageUrl = "http://www.villard.biz/assets/Uploads/projects/portrait-o.jpg";
+String sdCard = VutaImage.getExternalStorage( );
+String filename = sdCard+"/file.png";
+
+VutaImage.download( imageUrl, filename, new ImageDownloadCallback() {
+   @Override
+   public void progress(int elapsed, int totalSize) {
+      Log.e( TAG , "Image download progress = "+elapsed+" out of "+totalSize );
+   }
+   
+   @Override
+   public void done(boolean success) {
+      Log.e( TAG , "Image download done with success = "+success );
+   }
+});
+				</pre>
+				</p>
+				
+				<h4 class="heading-smaller"> c). Using the VutaImageItem object</h4>
+				<p>
+				You can use an instance of the VutaImageItem as a parameter to download the image
+				<p>
+				<pre class="prettyprint lang-java">
+String sdCard = VutaImage.getExternalStorage( );
+VutaImageItem vutaImageItem = new VutaImageItem(
+	"http://domain.com/img.png", sdcard+"/image.png" );
+
+VutaImage.download( vutaImageItem, new ImageDownloadCallback() {
+   @Override
+   public void progress(int elapsedSize, int totalSize) {
+      Log.e("TAG_", "iMAGE progress --- "+elapsedSize+" out of ->"+totalSize );
+   }
+   
+   @Override
+   public void done(boolean success) {
+      Log.e("TAG_", "iMAGE done with status --- "+success );
+   }
+});
+				</pre>
+				<p>
+				
+				
+				
+				<!-- configurations ---->
+				<h2 id="configurations" class="heading">Configurations</h2>
+				<h2 id="documentation" class="heading">Methods Documentation</h2>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-3 right-menu hidden-xs">
 				<div class="menu">
