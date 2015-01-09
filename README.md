@@ -1,7 +1,7 @@
 VutaImage
 =========
 
-Android Library that makes it easy to download images with a simple and straight forward api.
+Android Library that makes it easy to download images in Android with a simple and straight forward api.
 
 =========
 For a complete documentation head to 
