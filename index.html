@@ -24,8 +24,8 @@ title="roboto" /-->
 					<p>Android Library that makes it easy to download images with a simple and straight forward API.</p>
 				</div>
 				<div class="col-lg-4 hidden-sm hidden-xs">
-					<a href="#download" class="download" title="Download Jar File">Download Jar <span class="version-tag">v1.0</span></a>
-					<a href="http://github.com/square/retrofit" data-title="View GitHub Project" class="menu github" data-original-title="" title="">
+					<a href="http://cdn.rebmos.net/java/vutaimage/vutaimage_1.0.jar" class="download btn btn-lg btn-primary" title="Download Jar File">Download Jar <span class="version-tag">v1.0</span></a>
+					<a href="http://github.com/square/retrofit" data-title="View GitHub Project" class="menu github hidden" data-original-title="" title="">
 					<img class="header-github" src="static/github_icon.png" alt="GitHub"></a>
                 
 				</div>
@@ -44,7 +44,7 @@ title="roboto" /-->
 				<p>At a glance</p>
 				<p>
 				<pre class="prettyprint lang-java">
-final String imageUrl = "http://www.villard.biz/assets/Uploads/projects/portrait-o.jpg";
+final String imageUrl = "http://myexample.com/img/sample1.png";
 VutaImage.download( imageUrl, new ImageDownloadCallback() {
    @Override
    public void progress(int elapsed, int totalSize) {
@@ -55,8 +55,7 @@ VutaImage.download( imageUrl, new ImageDownloadCallback() {
    public void done(boolean success) {
       Log.e( TAG , "Image download done with success = "+success );
    }
-});
-				</pre>
+});</pre>
 				</p>
 				
 				<h2 id="installation" class="heading">Installation</h2>
@@ -94,7 +93,7 @@ VutaImage.download( imageUrl, new ImageDownloadCallback() {
 				location - which is the <span class="embedded-link">sdcard</span>
 				
 					<pre class="prettyprint lang-java">
-final String imageUrl = "http://www.villard.biz/assets/Uploads/projects/portrait-o.jpg";
+final String imageUrl = "http://myexample.com/img/sample1.png";
 VutaImage.download( imageUrl, new ImageDownloadCallback() {
    @Override
    public void progress(int elapsed, int totalSize) {
@@ -105,8 +104,7 @@ VutaImage.download( imageUrl, new ImageDownloadCallback() {
    public void done(boolean success) {
       Log.e( TAG , "Image download done with success = "+success );
    }
-});
-				</pre>
+});</pre>
 				</p>
 				
 				<h4 class="heading-smaller"> b). Given the image url and the destination filename </h4>
@@ -117,7 +115,7 @@ VutaImage.download( imageUrl, new ImageDownloadCallback() {
 					<li>While this won't work <span class="embedded-link">myfile.png</span></li>
 				</ul>
 				<pre class="prettyprint lang-java">
-final String imageUrl = "http://www.villard.biz/assets/Uploads/projects/portrait-o.jpg";
+final String imageUrl = "http://myexample.com/img/sample1.png";
 String sdCard = VutaImage.getExternalStorage( );
 String filename = sdCard+"/file.png";
 
@@ -131,8 +129,7 @@ VutaImage.download( imageUrl, filename, new ImageDownloadCallback() {
    public void done(boolean success) {
       Log.e( TAG , "Image download done with success = "+success );
    }
-});
-				</pre>
+});</pre>
 				</p>
 				
 				<h4 class="heading-smaller"> c). Using the VutaImageItem object</h4>
@@ -154,8 +151,7 @@ VutaImage.download( vutaImageItem, new ImageDownloadCallback() {
    public void done(boolean success) {
       Log.e("TAG_", "iMAGE done with status --- "+success );
    }
-});
-				</pre>
+});</pre>
 				<p>
 			
 				
@@ -169,7 +165,7 @@ String sdcard = VutaImage.getExternalStorage();
 
 // Create a list of all the images we want to download 
 List<VutaImageItem> images = new ArrayList<VutaImageItem>();
-images.add( new VutaImageItem("https://myexample.com/img/sample1.png", sdcard+"/img.png" ));
+images.add( new VutaImageItem("http://myexample.com/img/sample1.png", sdcard+"/img.png" ));
 images.add( new VutaImageItem("http://myexample.com/img/sample2.png", sdcard+"/Logo1.png" ));
 images.add( new VutaImageItem("http://myexample.com/img/sampl23.png", sdcard+"/Logo2.png" ));
 				</pre>
@@ -208,8 +204,7 @@ VutaImage.download(images, new EachImageDownloadCallback() {
    public void done() {
       Log.e(TAG, "All images downloaded" );
    }
-});
-				</pre>
+});</pre>
 				</p>
 				
 				<h4 class="heading-smaller"> b). With callback for all images download - <b>ImagesDownloadCallback </b></h4>
@@ -226,7 +221,7 @@ VutaImage.download(images, new ImagesDownloadCallback() {
       Log.e(TAG, "All images downloaded" );
    }
 });
-				</pre>
+</pre>
 				</p>
 				
 				
@@ -235,14 +230,92 @@ VutaImage.download(images, new ImagesDownloadCallback() {
 				<!------------------------ configurations ------------------------>
 				<!------------------------ ------------------------ ------------------------>
 				<h2 id="configurations" class="heading">Configurations</h2>
+				<h3 class="heading-small">1. Setting default storage location</h3>
+				<p>You can set the default storage location for the downloaded images in cases where you are supplying only the image url.
+				For instance, in this case 
+				<pre class="prettyprint lang-java">
+VutaImage.download("http://myexample.com/img/sample1.png", new ImageDownloadCallback() {
+   ......
+});
+</pre>
+				The image is downloaded to the default storage which is the <span class="embedded-link">SDCARD</span>.<br/>
+				To choose a different storage location, use the method below. All subsequent image downloads will be stored in the 
+				location specified as the parameter to the method.
+				<pre class="prettyprint lang-java">VutaImage.setDefaultStorageDir( "/my/dir/path/")</pre>
+				</p>
+				<h3 class="heading-small">2. Getting the default storage location</h3>
+				<p>
+				To get the set default location, use the method below: 
+				<pre class="prettyprint lang-java">VutaImage.getDefaultStorageDir()</pre>
+				NB: If you don't call the <span class="embedded-link">VutaImage.setDefaultStorageDir( "/my/dir/path/")</span>,
+				the default storage will be the root of the sdcard.
+				</p>
+				
+				
+				<!------------------------ ------------------------ ------------------------>
+				<!------------------------ documentation ------------------------>
+				<!------------------------ ------------------------ ------------------------>				
 				<h2 id="documentation" class="heading">Methods Documentation</h2>
+				
+				<h3 class="heading-small">1. Callback methods</h3>
+				<h4 class="heading-smaller"> 1). <b>progress(int elapsed, int totalSize) </b> </h4>
+				<p>
+				Called during the download progress of a single image 
+				<pre class="prettyprint lang-java">
+// The first parameter(elapsed) holds the total file size already downloaded in KB
+// Second parameter (totalSize) - Is the file total size in KB
+@Override
+public void progress(int elapsed, int totalSize) { .... }
+</pre>
+				</p>
+				<h4 class="heading-smaller"> 2). <b>public void onProgress(VutaImageItem image, boolean success)</b> </h4>
+				<p>Called  during the download of multiple images after one image has been downloaded fully or an error occurred while
+				downloading.
+	<pre class="prettyprint lang-java">
+// First parameter -image - represents the <span class="embedded-link">VutaImageItem</span> instance of the image downloaded
+// Second parameter - success - tells whether the download went on ok (True) or an error occurred (False)
+@Override
+public void onProgress(VutaImageItem image, boolean success) { .... }
+</pre>
+				</p>
+				
+				<h4 class="heading-smaller"> 3). <b>public void onError(VutaImageItem image) {</b> </h4>
+				<p>Called  if an error is encountered during the download process of multiple images <br/>
+				NB: This method is triggered just before <span class="embedded-link">onProgress(VutaImageItem image, boolean success)</span>
+	<pre class="prettyprint lang-java">
+// First parameter -image - represents the <span class="embedded-link">VutaImageItem</span> instance of the image that failed
+@Override
+public void onError(VutaImageItem image) { .... }
+</pre>
+				</p>
+				
+				<h4 class="heading-smaller"> 4). <b>done(boolean success) </b> </h4>
+				<p>Called  when the download is fully completed with or without errors for a single image download
+	<pre class="prettyprint lang-java">
+// success - True if everything was downloaded without error 
+//         - False if an error occurred during download process
+@Override
+public void done( boolean success) { .... }
+</pre>
+				</p>
+				
+				<h4 class="heading-smaller"> 5). <b>done() </b> </h4>
+				<p>Called  when the download is fully completed with or without errors for multiple images download
+	<pre class="prettyprint lang-java">
+@Override
+public void done() { .... }
+</pre>
+				</p>				
+				
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-3 right-menu hidden-xs">
 				<div class="menu">
 					<div class="list-group">
 						<a href="#introduction" class="list-group-item active">Introduction</a>
 						<a href="#installation" class="list-group-item">Installation</a>
-						<a href="#installation" class="list-group-item">Download</a>
+						<a href="#usage" class="list-group-item">Examples</a>
+						<a href="#configurations" class="list-group-item">Configurations</a>
+						<a href="#documentation" class="list-group-item">Methods Documentation</a>
 					</div>
 				</div>
 			</div>
