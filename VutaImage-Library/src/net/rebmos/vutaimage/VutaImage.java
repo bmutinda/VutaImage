@@ -1,5 +1,6 @@
 package net.rebmos.vutaimage;
 
+import java.io.File;
 import java.util.List;
 
 import net.rebmos.vutaimage.callbacks.EachImageDownloadCallback;
@@ -37,7 +38,13 @@ public class VutaImage {
 	 * @param dirPath {@link String} - the storage path as a string e.g. /emulated/sdcard0/dir/
 	 */
 	public static void setDefaultStorageDir( String dirPath ){
-		VutaImage.defaultStorageDir = dirPath;
+		File f = new File( dirPath );
+		try{
+			f.mkdirs();
+			VutaImage.defaultStorageDir = f.getAbsolutePath();
+		}catch( Exception e ){
+			e.printStackTrace();
+		}
 	}
 	
 	/**
