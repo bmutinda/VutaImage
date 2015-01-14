@@ -2,6 +2,11 @@ package net.rebmos.vutaimage;
 
 import android.util.Log;
 
+/**
+ * 
+ * @author Mutinda Boniface
+ *
+ */
 public class VutaLogger {
 
 	// make false on production

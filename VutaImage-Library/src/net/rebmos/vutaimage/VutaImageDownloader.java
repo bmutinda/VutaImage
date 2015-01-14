@@ -11,6 +11,11 @@ import java.net.URL;
 import net.rebmos.vutaimage.callbacks.ImageDownloadCallback;
 import android.os.AsyncTask;
 
+/**
+ * 
+ * @author Mutinda Boniface
+ * 
+ */
 public class VutaImageDownloader {
 	String imageUrl;
 	String imageFilename;
@@ -42,9 +47,6 @@ public class VutaImageDownloader {
 		// Resolve the filename if their was no filename supplied 
 		if( this.imageFilename == null ){
 			this.imageFilename = VutaImageItem.resolveFileName( this.imageUrl );
-			
-			// By default we donwload the image to sdcard 
-			this.imageFilename = VutaImage.getExternalStorage()+"/"+this.imageFilename;
 		}
 		
 		new DownloadAsyncTask().execute();

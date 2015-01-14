@@ -8,7 +8,6 @@ import net.rebmos.vutaimage.callbacks.ImagesDownloadCallback;
 import android.os.Environment;
 
 /**
- * 
  * @author Mutinda Boniface <http://mutindaz.github.io>
  * @version 1.0
  * @website http://mutindaz.github.io/vutaimage
@@ -77,7 +76,7 @@ public class VutaImage {
 	}
 	
 	/**
-	 * Downloads a single image give the image url  and the filename
+	 * Downloads a single image given the image url  and the filename
 	 * <p> </p>
 	 * @param url - {@link String} - The image source
 	 * @param filename - {@link String} - Final destination of the image
