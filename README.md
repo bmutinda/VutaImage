@@ -1,6 +1,8 @@
 VutaImage
 =========
 
+[![Join the chat at https://gitter.im/mutindaz/VutaImage](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mutindaz/VutaImage?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Android Library that makes it easy to download images in Android with a simple and straight forward api.
 
 =========
