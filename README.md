@@ -7,7 +7,7 @@ Android Library that makes it easy to download images in Android with a simple a
 
 =========
 For a complete documentation head to 
-<a href="http://mutindaz.github.io/VutaImage/">http://mutindaz.github.io/VutaImage/</a>
+<a href="http://bmutinda.github.io/VutaImage/">http://bmutinda.github.io/VutaImage/</a>
 
 Example1
 ``` java 
